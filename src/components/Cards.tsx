@@ -8,8 +8,8 @@ interface Card {
     title: string;
     image: string;
     description: string;
-    background: ClassValue;
-    onClick: MouseEventHandler<HTMLButtonElement>;
+    background?: ClassValue;
+    onClick?: MouseEventHandler<HTMLButtonElement>;
     buttonText: string;
 }
 

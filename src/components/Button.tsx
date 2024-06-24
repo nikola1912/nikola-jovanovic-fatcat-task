@@ -3,8 +3,8 @@ import { FC, MouseEventHandler, ReactNode } from 'react';
 import clsx, { ClassValue } from 'clsx';
 
 interface ButtonProps {
-    children: ReactNode;
-    onClick: MouseEventHandler<HTMLButtonElement>;
+    children?: ReactNode;
+    onClick?: MouseEventHandler<HTMLButtonElement>;
     className?: ClassValue;
 }
 

@@ -3,8 +3,8 @@ import { FC, ReactNode } from 'react';
 import clsx, { ClassValue } from 'clsx';
 
 interface LayoutProps {
-    children: ReactNode;
-    background: ClassValue;
+    children?: ReactNode;
+    background?: ClassValue;
 }
 
 export const Layout: FC<LayoutProps> = ({ children, background }) => {
