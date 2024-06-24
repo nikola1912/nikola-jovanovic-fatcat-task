@@ -1,6 +1,6 @@
-import './styles.css';
+import { Landing } from './components/landing/Landing';
 
-import { Landing } from './components/landing/Landing.jsx';
+import './styles.css';
 
 function App() {
     return (

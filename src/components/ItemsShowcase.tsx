@@ -1,4 +1,15 @@
-export const ItemsShowcase = ({ items }) => {
+import { FC } from 'react';
+
+interface ItemsShowcaseItem {
+    title: string;
+    description: string;
+}
+
+interface ItemsShowcaseProps {
+    items: ItemsShowcaseItem[];
+}
+
+export const ItemsShowcase: FC<ItemsShowcaseProps> = ({ items }) => {
     return (
         <div className="flex justify-center items-center">
             <div className="grid grid-cols-2 gap-8 w-8/12">

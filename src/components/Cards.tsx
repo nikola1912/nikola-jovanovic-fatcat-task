@@ -1,8 +1,23 @@
-import clsx from 'clsx';
+import { FC, MouseEventHandler } from 'react';
 
-import { Button } from './Button.jsx';
+import clsx, { ClassValue } from 'clsx';
 
-export const Cards = ({ cards }) => {
+import { Button } from './Button';
+
+interface Card {
+    title: string;
+    image: string;
+    description: string;
+    background: ClassValue;
+    onClick: MouseEventHandler<HTMLButtonElement>;
+    buttonText: string;
+}
+
+interface CardsProps {
+    cards: Card[];
+}
+
+export const Cards: FC<CardsProps> = ({ cards }) => {
     return (
         <div className={clsx('flex', 'justify-center', 'items-center')}>
             <div className={clsx('grid', 'grid-cols-2', 'gap-8', 'w-8/12')}>
