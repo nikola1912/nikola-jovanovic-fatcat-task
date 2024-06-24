@@ -2,7 +2,7 @@ import { FC, MouseEventHandler } from 'react';
 
 import clsx, { ClassValue } from 'clsx';
 
-import { Button } from './Button';
+import { Button } from '@homework-task/components/Button';
 
 interface Card {
     title: string;

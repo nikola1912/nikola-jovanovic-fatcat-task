@@ -23,7 +23,13 @@
         "noImplicitAny": true,
         "strict": true,
         "strictNullChecks": true,
-        "noImplicitThis": true
+        "noImplicitThis": true,
+
+        /* Import aliases */
+        "baseUrl": ".",
+        "paths": {
+            "@homework-task/*": ["./src/*"]
+        }
     },
     "include": ["src"]
 }

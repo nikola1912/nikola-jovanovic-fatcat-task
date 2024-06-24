@@ -6,4 +6,9 @@ export default defineConfig({
     define: {
         __CWD__: JSON.stringify(process.cwd()),
     },
+    resolve: {
+        alias: {
+            '@homework-task': '/src',
+        },
+    },
 });
