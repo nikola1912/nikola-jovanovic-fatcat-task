@@ -15,7 +15,7 @@ export const List = () => {
     }
 
     return (
-        <div className={clsx('grid', 'grid-cols-3', 'gap-4')}>
+        <div className={clsx('grid', 'grid-cols-3', 'gap-4', 'px-4')}>
             {users.data?.map((user) => (
                 <div
                     key={user.id}
