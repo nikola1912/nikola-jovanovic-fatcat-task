@@ -29,6 +29,7 @@ export const List = () => {
                     <h2 className={clsx('text-xl', 'font-semibold', 'mb-2')}>
                         {user.name}
                     </h2>
+                    <p className={clsx('mb-1')}>ID: {user.id}</p>
                     <p className={clsx('mb-1')}>Username: {user.username}</p>
                     <p className={clsx('mb-1')}>Email: {user.email}</p>
                     <p>Phone: {user.phone}</p>
