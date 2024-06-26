@@ -18,7 +18,6 @@ interface CreateFormProps<T extends FieldValues> {
     useMutation: () => UseMutationResult<unknown, Error, T, unknown>;
     validationSchema: ZodSchema;
     successMessage: string;
-    // TODO: defaultValues
     renderForm: ({
         register,
         errors,
