@@ -1,13 +1,21 @@
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { z } from 'zod';
+import {
+    QueryClient,
+    QueryClientProvider,
+    useMutation,
+} from '@tanstack/react-query';
 
 import { Landing } from '@homework-task/components/landing/Landing';
 import {
     PageGenerator,
     PageSection,
 } from '@homework-task/components/task/PageGenerator';
+import { List } from '@homework-task/components/task/List';
+import { CreateForm } from '@homework-task/components/task/CreateForm';
+import { TextField } from '@homework-task/components/form/TextField';
+import { TextArea } from '@homework-task/components/form/TextArea';
 
 import './styles.css';
-import { List } from './components/task/List';
 
 const data: PageSection[] = [
     {
@@ -126,11 +134,75 @@ const data: PageSection[] = [
 
 const queryClient = new QueryClient();
 
+const PostSchema = z.object({
+    title: z
+        .string()
+        .min(1, 'Title is required')
+        .max(20, { message: 'Title is too long' }),
+    body: z
+        .string()
+        .min(1, 'Body is required')
+        .max(150, { message: 'Body is too long' }),
+});
+
+type PostFormInputs = z.infer<typeof PostSchema>;
+
+interface CreatePostResponse {
+    id: number;
+}
+
+const createPost = (data: PostFormInputs) =>
+    fetch('https://jsonplaceholder.typicode.com/posts', {
+        method: 'POST',
+        body: JSON.stringify({
+            userId: 1,
+            title: data.title,
+            body: data.body,
+        }),
+    }).then((response) => response.json());
+
+const useCreatePost = () => {
+    return useMutation<CreatePostResponse, Error, PostFormInputs>({
+        mutationFn: createPost,
+        onSuccess: (data) => {
+            console.log(data);
+        },
+    });
+};
+
 function App() {
     return (
         <QueryClientProvider client={queryClient}>
             <main>
                 <Landing />
+                <CreateForm<PostFormInputs>
+                    successMessage="Successfully created a post!"
+                    validationSchema={PostSchema}
+                    useMutation={useCreatePost}
+                    renderForm={({ register, errors }) => (
+                        <>
+                            <TextField
+                                required
+                                fullWidth
+                                id="title"
+                                label="Title"
+                                error={!!errors.title}
+                                helperText={errors.title?.message}
+                                {...register('title')}
+                            />
+                            <TextArea
+                                required
+                                fullWidth
+                                rows={6}
+                                id="body"
+                                label="Body"
+                                error={!!errors.body}
+                                helperText={errors.body?.message}
+                                {...register('body')}
+                            />
+                        </>
+                    )}
+                />
                 {/* <List /> */}
                 {/*<PageGenerator data={data} /> */}
             </main>
