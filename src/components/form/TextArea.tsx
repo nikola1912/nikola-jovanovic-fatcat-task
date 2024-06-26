@@ -1,5 +1,6 @@
 import { TextareaHTMLAttributes, forwardRef } from 'react';
-import clsx from 'clsx';
+
+import { clsx } from 'clsx';
 
 interface TextAreaProps extends TextareaHTMLAttributes<HTMLTextAreaElement> {
     required?: boolean;
@@ -57,3 +58,5 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
         );
     }
 );
+
+TextArea.displayName = 'TextArea';

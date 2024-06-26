@@ -1,7 +1,7 @@
-import { FC } from 'react';
+import { FC, PropsWithChildren } from 'react';
 
-import { PageSection } from './types';
 import { PAGE_COMPONENT_MAP, PAGE_SECTION_MAP } from './maps';
+import { PageSection } from './types';
 
 interface PageGeneratorProps {
     data: PageSection[];
@@ -11,19 +11,22 @@ export const PageGenerator: FC<PageGeneratorProps> = ({ data }) => {
     return (
         <>
             {data.map((pageSection, pageSectionIndex) => {
-                const Section = PAGE_SECTION_MAP[pageSection.type];
-                // Props are already type checked on `PageGenerator` usage level, so we're safe to use `any` here
-                const sectionProps = pageSection.props as any;
+                // Props are already type checked on `PageGenerator` usage level
+                // So here it's enough to know that `Section` is a component which accepts children
+                const Section = PAGE_SECTION_MAP[
+                    pageSection.type
+                ] as FC<PropsWithChildren>;
+                const sectionProps = pageSection.props;
 
                 return (
                     <Section key={pageSectionIndex} {...sectionProps}>
                         {pageSection.components.map(
                             (pageComponent, pageComponentIndex) => {
-                                const Component =
-                                    PAGE_COMPONENT_MAP[pageComponent.type];
-                                // Same as with `sectionProps`
-                                const componentProps =
-                                    pageComponent.props as any;
+                                // Same as with `Section` except we don't use `PropsWithChildren`
+                                const Component = PAGE_COMPONENT_MAP[
+                                    pageComponent.type
+                                ] as FC;
+                                const componentProps = pageComponent.props;
 
                                 return (
                                     <Component

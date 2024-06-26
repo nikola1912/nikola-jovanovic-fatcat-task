@@ -1,9 +1,8 @@
 import { ReactNode } from 'react';
 
-import clsx from 'clsx';
-import { ZodSchema } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { UseMutationResult } from '@tanstack/react-query';
+import { clsx } from 'clsx';
 import {
     FieldErrors,
     FieldValues,
@@ -11,11 +10,12 @@ import {
     UseFormRegister,
     useForm,
 } from 'react-hook-form';
+import { ZodSchema } from 'zod';
 
 import { SubmitButton } from '@homework-task/components/form/SubmitButton';
 
 interface CreateFormProps<T extends FieldValues> {
-    useMutation: () => UseMutationResult<any, Error, T, unknown>;
+    useMutation: () => UseMutationResult<unknown, Error, T, unknown>;
     validationSchema: ZodSchema;
     successMessage: string;
     // TODO: defaultValues
@@ -45,15 +45,12 @@ export const CreateForm = <T extends FieldValues>({
             onSuccess: () => {
                 form.reset();
             },
-            onError: (error) => {
-                console.error(error);
-            },
         });
     };
 
     return (
         <form
-            onSubmit={form.handleSubmit(onSubmit)}
+            onSubmit={(event) => void form.handleSubmit(onSubmit)(event)}
             className={clsx(
                 'container',
                 'mx-auto',

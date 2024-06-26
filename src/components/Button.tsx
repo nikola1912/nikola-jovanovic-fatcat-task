@@ -1,6 +1,6 @@
 import { FC, MouseEventHandler, ReactNode } from 'react';
 
-import clsx, { ClassValue } from 'clsx';
+import { ClassValue, clsx } from 'clsx';
 
 interface ButtonProps {
     children?: ReactNode;

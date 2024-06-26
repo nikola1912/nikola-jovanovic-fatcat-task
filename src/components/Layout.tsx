@@ -1,6 +1,6 @@
 import { FC, ReactNode } from 'react';
 
-import clsx, { ClassValue } from 'clsx';
+import { clsx, ClassValue } from 'clsx';
 
 interface LayoutProps {
     children?: ReactNode;

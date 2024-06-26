@@ -1,4 +1,5 @@
 import { ComponentProps } from 'react';
+
 import { PAGE_SECTION_MAP, PAGE_COMPONENT_MAP } from './maps';
 
 type PageSectionType = keyof typeof PAGE_SECTION_MAP;

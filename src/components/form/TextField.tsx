@@ -1,5 +1,6 @@
 import { InputHTMLAttributes, forwardRef } from 'react';
-import clsx from 'clsx';
+
+import { clsx } from 'clsx';
 
 interface TextFieldProps extends InputHTMLAttributes<HTMLInputElement> {
     required?: boolean;
@@ -57,3 +58,5 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
         );
     }
 );
+
+TextField.displayName = 'TextField';

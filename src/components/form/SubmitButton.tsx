@@ -1,5 +1,6 @@
 import { FC, ReactNode } from 'react';
-import clsx from 'clsx';
+
+import { clsx } from 'clsx';
 
 interface SubmitButtonProps {
     isLoading: boolean;

@@ -1,6 +1,6 @@
 import { FC, MouseEventHandler } from 'react';
 
-import clsx, { ClassValue } from 'clsx';
+import { clsx, ClassValue } from 'clsx';
 
 import { Button } from '@homework-task/components/Button';
 

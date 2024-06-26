@@ -1,4 +1,5 @@
 import { useMutation } from '@tanstack/react-query';
+
 import { PostFormInputs } from './schema';
 
 interface CreatePostResponse {
@@ -18,8 +19,5 @@ const createPost = (data: PostFormInputs) =>
 export const useCreatePost = () => {
     return useMutation<CreatePostResponse, Error, PostFormInputs>({
         mutationFn: createPost,
-        onSuccess: (data) => {
-            console.log(data);
-        },
     });
 };

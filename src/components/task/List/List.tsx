@@ -1,4 +1,4 @@
-import clsx from 'clsx';
+import { clsx } from 'clsx';
 
 import { useFetchUsers } from './api';
 
@@ -10,7 +10,6 @@ export const List = () => {
     }
 
     if (users.error) {
-        console.error(users.error.message);
         return <p>Something went wrong</p>;
     }
 

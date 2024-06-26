@@ -1,10 +1,10 @@
 import { FC, useState } from 'react';
 
-import clsx from 'clsx';
+import { clsx } from 'clsx';
 
-import { List } from '../List';
 import { FormGeneratorTab } from './FormGeneratorTab';
 import { PageGeneratorTab } from './PageGeneratorTab';
+import { List } from '../List';
 
 const tasks = [
     { id: 1, title: '1. User List', content: <List /> },
