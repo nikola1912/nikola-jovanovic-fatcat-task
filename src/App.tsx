@@ -1,3 +1,5 @@
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+
 import { Landing } from '@homework-task/components/landing/Landing';
 import {
     PageGenerator,
@@ -5,6 +7,7 @@ import {
 } from '@homework-task/components/task/PageGenerator';
 
 import './styles.css';
+import { List } from './components/task/List';
 
 const data: PageSection[] = [
     {
@@ -121,12 +124,17 @@ const data: PageSection[] = [
     },
 ];
 
+const queryClient = new QueryClient();
+
 function App() {
     return (
-        <main>
-            <Landing />
-            <PageGenerator data={data} />
-        </main>
+        <QueryClientProvider client={queryClient}>
+            <main>
+                <Landing />
+                {/* <List /> */}
+                {/*<PageGenerator data={data} /> */}
+            </main>
+        </QueryClientProvider>
     );
 }
 
